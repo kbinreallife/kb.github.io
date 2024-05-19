@@ -27,7 +27,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "18" # Ensure to use a compatible version
+          node-version: "18"
           cache: pnpm
 
       - name: Setup Pages
@@ -51,7 +51,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: out # Make sure this is correct, or use the correct output directory if different
+          path: out
 
   deploy:
     environment:
