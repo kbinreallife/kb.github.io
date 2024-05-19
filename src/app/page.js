@@ -44,7 +44,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex content-center place-items-center dark:bg-grey-100">
+    <div className="min-h-screen place-items-center dark:bg-grey-100">
       <div className="max-w-md mx-auto py-8 text-center">
         <Head>
           <title>thekbsareinsidethecomputer</title>
