@@ -17,7 +17,7 @@ jobs:
         run: npm install -g pnpm
 
       - name: Install moar deps
-        run: pnpm install next
+        run: pnpm install next -w
 
       - name: Build
         run: pnpm build
