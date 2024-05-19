@@ -23,4 +23,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: kbinreallife/actions-gh-pages  # Change this to match your build output directory
+          publish_dir: kbinreallife/actions-gh-pages
