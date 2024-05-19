@@ -44,11 +44,11 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen dark:bg-grey-100">
+    <div className="min-h-screen flex content-center place-items-center dark:bg-grey-100">
       <div className="max-w-md mx-auto py-8 text-center">
         <Head>
-          <title>My Personal Website</title>
-          <meta name="description" content="Welcome to my personal website" />
+          <title>thekbsareinsidethecomputer</title>
+          <meta name="description" content="what is this, a website for ants?" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
@@ -93,7 +93,7 @@ export default function Home() {
             <div className="rounded-md h-48">
               <h2 className="text-lg font-bold mb-2">About Me</h2>
               <p>
-              I'm an incessently curious, tenacious, deliberate, and whimsical dude who likes to build the things that live in-between. Full stack Engineer in disciplina with a burining interest for the middleware, microservices, APIs and frameworks that empower developers.
+                I&apos;m an incessantly curious, tenacious, deliberate, and whimsical dude who likes to build the things that live in-between. Full stack Engineer in disciplina with a burning interest for the middleware, microservices, APIs and frameworks that empower developers.
               </p>
             </div>
           )}
