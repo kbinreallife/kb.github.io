@@ -145,7 +145,7 @@ export default function Home() {
                 <div>
                     <p>
                     <a
-                        href="https://bluesky.com/your-profile"
+                        href="https://bsky.app/profile/kbinreallife.bsky.social"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-blue-500 hover:underline"
