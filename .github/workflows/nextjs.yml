@@ -29,6 +29,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Install pnpm
+        run: npm install -g pnpm
       - name: Checkout
         uses: actions/checkout@v4
       - name: Detect package manager
@@ -53,6 +55,8 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
+      # Other steps remain the same...
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
