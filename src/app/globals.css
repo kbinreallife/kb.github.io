@@ -28,7 +28,7 @@ body {
 
 @layer utilities {
   .text-balance {
-    text-wrap: flex;
+    text-wrap: stable;
   }
 }
 
