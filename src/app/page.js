@@ -123,15 +123,60 @@ export default function Home() {
           )}
 
           {/* Contact Section */}
-          {showSection === 'contact' && (
+            {showSection === 'contact' && (
             <div className="p-4 rounded-md h-48">
-              <h2 className="text-lg font-bold mb-2">Contact</h2>
-              <p>
-                Nam tristique justo et justo mattis, eu mollis ligula volutpat. Sed nec feugiat justo. Cras dapibus,
-                sapien eget molestie tincidunt, elit augue fermentum purus, sit amet congue eros tortor a est.
-              </p>
+                <h2 className="text-lg font-bold mb-2">Contact</h2>
+                <div className="flex flex-col space-y-4">
+                {/* LinkedIn */}
+                <div>
+                    <p>
+                    {" "}
+                    <a
+                        href="https://www.linkedin.com/in/kyle-butcher-67424040"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-500 hover:underline"
+                    >
+                        LinkedIn
+                    </a>
+                    </p>
+                </div>
+                {/* Bluesky */}
+                <div>
+                    <p>
+                    <a
+                        href="https://bluesky.com/your-profile"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-500 hover:underline"
+                    >
+                        Bluesky
+                    </a>
+                    </p>
+                </div>
+                {/* Discord */}
+                <div>
+                    <h3 className="text-lg font-semibold"></h3>
+                    <p>
+                    <span className="text-blue-500 hover:underline"><a href="https://discordapp.com/users/233443821940113408">Discord</a></span>
+                    </p>
+                </div>
+                    <p>
+                    
+                    <a
+                        href="https://discord.gg/hackmud"
+                        className="text-blue-500 hover:underline"
+                    >
+                        hackmud discord
+                    </a>
+                    </p>
+                <div>
+
+                </div>
+                </div>
             </div>
-          )}
+            )}
+
         </div>
       </div>
     </div>
