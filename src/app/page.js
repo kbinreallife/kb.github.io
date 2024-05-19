@@ -54,7 +54,7 @@ export default function Home() {
 
         {/* Header */}
         <header>
-          <h1 className="text-4xl font-bold text-blue-500">kb</h1>
+          <h1 className="text-4xl font-bold text-blue-500">kb in real life</h1>
           <p className="text-lg text-gray-700">Software Engineer</p>
         </header>
 
