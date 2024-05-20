@@ -108,11 +108,11 @@ export default function Home() {
                     Boilerplate project to make websites like this one
                   </div>
                 </a>
-                <a href="https://github.com/kbinreallife/kbinreallife-Github_Activity_Visualizer">
                   <div className="p-2 rounded bg-gray-800 hover:bg-gray-900">
+                  <a href="https://github.com/kbinreallife/kbinreallife-Github_Activity_Visualizer">
                     A Github Organization Activity Visualizer
+                    </a>
                   </div>
-                </a>
                 <a href="https://comcode.org" className="block text-blue-500">
                   <div className="p-2 rounded bg-gray-800 hover:bg-gray-900">
                     The Organization I Volunteer for
