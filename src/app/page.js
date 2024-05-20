@@ -108,7 +108,7 @@ export default function Home() {
                     Boilerplate project to make websites like this one
                   </div>
                 </a>
-                <a href="https://github.com/kbinreallife/github-pages-next-tailwind-boilerplate" className="block text-blue-500">
+                <a href="https://github.com/kbinreallife/kbinreallife-Github_Activity_Visualizer">
                   <div className="p-2 rounded bg-gray-800 hover:bg-gray-900">
                     A Github Organization Activity Visualizer
                   </div>
