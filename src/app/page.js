@@ -43,6 +43,22 @@ export default function Home() {
     };
   };
 
+  const badges = [
+    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104579180',
+    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104554484',
+    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104434982',
+    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104338603',
+    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104338603',
+    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104066782',
+    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104066782',
+    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104024819',
+    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/103848058',
+    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/92312569',
+    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/84649053',
+    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/84040776',
+    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/37169657'
+  ]
+
   return (
     <div className="min-h-screen place-items-center dark:bg-grey-100">
       <div className="max-w-md mx-auto py-8 text-center">
@@ -76,6 +92,11 @@ export default function Home() {
             <li>
               <a href="#" className="text-blue-500 hover:underline nav-link" onClick={handleClickLink('projects')}>
                 Projects
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-blue-500 hover:underline nav-link" onClick={handleClickLink('badges')}>
+                Badges
               </a>
             </li>
             <li>
@@ -122,61 +143,75 @@ export default function Home() {
             </div>
           )}
 
+          {/* Badges Section */}
+          {showSection === 'badges' && (
+            <div className="p-4 rounded-md h-auto">
+              <h2 className="text-lg font-bold mb-2">Badges</h2>
+              <div className="grid grid-cols-2 gap-4">
+                {badges.map((badge, index) => (
+                  <iframe
+                    key={index}
+                    src={badge}
+                    width="200"
+                    height="200"
+                    frameBorder="0"
+                    allowFullScreen
+                  ></iframe>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Contact Section */}
-            {showSection === 'contact' && (
+          {showSection === 'contact' && (
             <div className="p-4 rounded-md h-48">
-                <h2 className="text-lg font-bold mb-2">Contact</h2>
-                <div className="flex flex-col space-y-4">
+              <h2 className="text-lg font-bold mb-2">Contact</h2>
+              <div className="flex flex-col space-y-4">
                 {/* LinkedIn */}
                 <div>
-                    <p>
-                    {" "}
+                  <p>
                     <a
-                        href="https://www.linkedin.com/in/kyle-butcher-67424040"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-500 hover:underline"
+                      href="https://www.linkedin.com/in/kyle-butcher-67424040"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500 hover:underline"
                     >
-                        LinkedIn
+                      LinkedIn
                     </a>
-                    </p>
+                  </p>
                 </div>
                 {/* Bluesky */}
                 <div>
-                    <p>
+                  <p>
                     <a
-                        href="https://bsky.app/profile/kbinreallife.bsky.social"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-500 hover:underline"
+                      href="https://bsky.app/profile/kbinreallife.bsky.social"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500 hover:underline"
                     >
-                        Bluesky
+                      Bluesky
                     </a>
-                    </p>
+                  </p>
                 </div>
                 {/* Discord */}
                 <div>
-                    <h3 className="text-lg font-semibold"></h3>
-                    <p>
+                  <h3 className="text-lg font-semibold"></h3>
+                  <p>
                     <span className="text-blue-500 hover:underline"><a href="https://discordapp.com/users/233443821940113408">Discord</a></span>
-                    </p>
+                  </p>
                 </div>
-                    <p>
-                    
-                    <a
-                        href="https://discord.gg/hackmud"
-                        className="text-blue-500 hover:underline"
-                    >
-                        hackmud discord
-                    </a>
-                    </p>
-                <div>
-
-                </div>
-                </div>
+                <p>
+                  <a
+                    href="https://discord.gg/hackmud"
+                    className="text-blue-500 hover:underline"
+                  >
+                    hackmud discord
+                  </a>
+                </p>
+                <div></div>
+              </div>
             </div>
-            )}
-
+          )}
         </div>
       </div>
     </div>
