@@ -11,17 +11,21 @@ export { DynamicHome };
 export default function Home() {
   const [showSection, setShowSection] = useState(null);
   const outsideClickListener = useRef(null);
+
+  // Function to toggle the visibility of the section based on the link clicked
   const toggleSection = (section) => {
     setShowSection(showSection === section ? null : section);
   };
-  
+
+  // Function to hide all sections when clicking anywhere on the screen that is not a link
   const hideAllSections = () => {
     setShowSection(null);
   };
 
+  // Effect to add a global click event listener to hide sections when clicking outside the links
   useEffect(() => {
     outsideClickListener.current = (event) => {
-      if (!event.target.closest('.nav-link') && !event.target.closest('.section-content')) {
+      if (!event.target.closest('.nav-link')) {
         hideAllSections();
       }
     };
@@ -31,67 +35,13 @@ export default function Home() {
     };
   }, []);
 
+  // Function to add click event listener to the links when they are clicked
   const handleClickLink = (section) => {
     return (event) => {
       event.stopPropagation();
       toggleSection(section);
     };
   };
-
-  const badges = [
-    {
-      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104579180',
-      linkUrl: 'https://www.credential.net/104579180',
-    },
-    {
-      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104554484',
-      linkUrl: 'https://www.credential.net/104554484',
-    },
-    {
-      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104434982',
-      linkUrl: 'https://www.credential.net/104434982',
-    },
-    {
-      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104338603',
-      linkUrl: 'https://www.credential.net/104338603',
-    },
-    {
-      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104338603',
-      linkUrl: 'https://www.credential.net/104338603',
-    },
-    {
-      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104066782',
-      linkUrl: 'https://www.credential.net/104066782',
-    },
-    {
-      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104066782',
-      linkUrl: 'https://www.credential.net/104066782',
-    },
-    {
-      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104024819',
-      linkUrl: 'https://www.credential.net/104024819',
-    },
-    {
-      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/103848058',
-      linkUrl: 'https://www.credential.net/103848058',
-    },
-    {
-      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/92312569',
-      linkUrl: 'https://www.credential.net/92312569',
-    },
-    {
-      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/84649053',
-      linkUrl: 'https://www.credential.net/84649053',
-    },
-    {
-      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/84040776',
-      linkUrl: 'https://www.credential.net/84040776',
-    },
-    {
-      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/37169657',
-      linkUrl: 'https://www.credential.net/37169657',
-    },
-  ];
 
   return (
     <div className="min-h-screen place-items-center dark:bg-grey-100">
@@ -129,11 +79,6 @@ export default function Home() {
               </a>
             </li>
             <li>
-              <a href="#" className="text-blue-500 hover:underline nav-link" onClick={handleClickLink('badges')}>
-                Badges
-              </a>
-            </li>
-            <li>
               <a href="#" className="text-blue-500 hover:underline nav-link" onClick={handleClickLink('contact')}>
                 Contact
               </a>
@@ -145,7 +90,7 @@ export default function Home() {
         <div className="mt-8">
           {/* About Me Section */}
           {showSection === 'about' && (
-            <div className="rounded-md h-48 section-content">
+            <div className="rounded-md h-48">
               <h2 className="text-lg font-bold mb-2">About Me</h2>
               <p>
                 I&apos;m an incessantly curious, tenacious, deliberate, and whimsical dude who likes to build the things that live in-between. Full stack Engineer in disciplina with a burning interest for the middleware, microservices, APIs and frameworks that empower developers.
@@ -155,20 +100,25 @@ export default function Home() {
 
           {/* Projects Section */}
           {showSection === 'projects' && (
-            <div className="p-4 rounded-md h-48 section-content">
-              <h2 className="text-lg font-bold mb-2">Projects</h2>
+            <div className="p-4 rounded-md h-48">
+              <h2 className="text-lg font-bold mb-2">Projects and Skills</h2>
               <div className="space-y-2">
-                <a href="https://github.com/kbinreallife/github-pages-next-tailwind-boilerplate" className="block text-blue-500" onClick={(e) => e.stopPropagation()}>
+              <a href="https://skillsoft.digitalbadges.skillsoft.com/profile/kylebutcher440290/wallet#gs.9wuh1h" className="block text-blue-500">
+                  <div className="p-2 rounded bg-gray-800 hover:bg-gray-900">
+                    My Badges and Certificates
+                  </div>
+                </a>
+                <a href="https://github.com/kbinreallife/github-pages-next-tailwind-boilerplate" className="block text-blue-500">
                   <div className="p-2 rounded bg-gray-800 hover:bg-gray-900">
                     Boilerplate project to make websites like this one
                   </div>
                 </a>
-                <a href="https://github.com/kbinreallife/kbinreallife-Github_Activity_Visualizer" className="block text-blue-500" onClick={(e) => e.stopPropagation()}>
+                <a href="https://github.com/kbinreallife/kbinreallife-Github_Activity_Visualizer" className="block text-blue-500">
                   <div className="p-2 rounded bg-gray-800 hover:bg-gray-900">
                     A Github Organization Activity Visualizer
                   </div>
                 </a>
-                <a href="https://comcode.org" className="block text-blue-500" onClick={(e) => e.stopPropagation()}>
+                <a href="https://comcode.org" className="block text-blue-500">
                   <div className="p-2 rounded bg-gray-800 hover:bg-gray-900">
                     The Organization I Volunteer for
                   </div>
@@ -177,81 +127,61 @@ export default function Home() {
             </div>
           )}
 
-          {/* Badges Section */}
-          {showSection === 'badges' && (
-          <div className="p-4 rounded-md h-auto section-content">
-            <h2 className="text-lg font-bold mb-2">Badges</h2>
-            <div className="grid grid-cols-2 gap-4 grid-container">
-            {badges.map((badge, index) => (
-                <a href={badge.linkUrl} target="_blank" rel="noopener noreferrer" key={index} onClick={(e) => e.stopPropagation()} className="grid-item">
-                <img
-                    src={badge.imageUrl}
-                    alt={`Badge ${index + 1}`}
-                    width="200"
-                    height="200"
-                />
-                </a>
-            ))}
-            </div>
-          </div>
-          )}
-
-
           {/* Contact Section */}
-          {showSection === 'contact' && (
-            <div className="p-4 rounded-md h-48 section-content">
-              <h2 className="text-lg font-bold mb-2">Contact</h2>
-              <div className="flex flex-col space-y-4">
+            {showSection === 'contact' && (
+            <div className="p-4 rounded-md h-48">
+                <h2 className="text-lg font-bold mb-2">Contact</h2>
+                <div className="flex flex-col space-y-4">
                 {/* LinkedIn */}
                 <div>
-                  <p>
+                    <p>
+                    {" "}
                     <a
-                      href="https://www.linkedin.com/in/kyle-butcher-67424040"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-500 hover:underline"
-                      onClick={(e) => e.stopPropagation()}
+                        href="https://www.linkedin.com/in/kyle-butcher-67424040"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-500 hover:underline"
                     >
-                      LinkedIn
+                        LinkedIn
                     </a>
-                  </p>
+                    </p>
                 </div>
                 {/* Bluesky */}
                 <div>
-                  <p>
+                    <p>
                     <a
-                      href="https://bsky.app/profile/kbinreallife.bsky.social"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-500 hover:underline"
-                      onClick={(e) => e.stopPropagation()}
+                        href="https://bsky.app/profile/kbinreallife.bsky.social"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-500 hover:underline"
                     >
-                      Bluesky
+                        Bluesky
                     </a>
-                  </p>
+                    </p>
                 </div>
                 {/* Discord */}
                 <div>
-                  <h3 className="text-lg font-semibold"></h3>
-                  <p>
-                    <span className="text-blue-500 hover:underline">
-                      <a href="https://discordapp.com/users/233443821940113408" onClick={(e) => e.stopPropagation()}>Discord</a>
-                    </span>
-                  </p>
+                    <h3 className="text-lg font-semibold"></h3>
+                    <p>
+                    <span className="text-blue-500 hover:underline"><a href="https://discordapp.com/users/233443821940113408">Discord</a></span>
+                    </p>
                 </div>
-                <p>
-                  <a
-                    href="https://discord.gg/hackmud"
-                    className="text-blue-500 hover:underline"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    hackmud discord
-                  </a>
-                </p>
-                <div></div>
-              </div>
+                    <p>
+                    
+                    <a
+                        href="https://discord.gg/hackmud"
+                        className="text-blue-500 hover:underline"
+                    >
+                        hackmud discord
+                    </a>
+                    </p>
+                <div>
+
+                </div>
+                </div>
             </div>
-          )}
+            )}
+
         </div>
       </div>
     </div>
