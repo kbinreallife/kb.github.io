@@ -1,7 +1,6 @@
 'use client'
-
 import dynamic from 'next/dynamic';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Head from 'next/head';
 
 const DynamicHome = dynamic(() => import('./globals.css'), { ssr: false });
@@ -21,7 +20,7 @@ export default function Home() {
 
   useEffect(() => {
     outsideClickListener.current = (event) => {
-      if (!event.target.closest('.nav-link')) {
+      if (!event.target.closest('.nav-link') && !event.target.closest('.section-content')) {
         hideAllSections();
       }
     };
@@ -31,12 +30,12 @@ export default function Home() {
     };
   }, []);
 
-  const handleClickLink = (section) => {
+  const handleClickLink = useCallback((section) => {
     return (event) => {
       event.stopPropagation();
       toggleSection(section);
     };
-  };
+  }, []);
 
   const badges = [
     {
@@ -145,7 +144,7 @@ export default function Home() {
         <div className="mt-8">
           {/* About Me Section */}
           {showSection === 'about' && (
-            <div className="rounded-md h-48">
+            <div className="rounded-md h-48 section-content">
               <h2 className="text-lg font-bold mb-2">About Me</h2>
               <p>
                 I&apos;m an incessantly curious, tenacious, deliberate, and whimsical dude who likes to build the things that live in-between. Full stack Engineer in disciplina with a burning interest for the middleware, microservices, APIs and frameworks that empower developers.
@@ -155,20 +154,20 @@ export default function Home() {
 
           {/* Projects Section */}
           {showSection === 'projects' && (
-            <div className="p-4 rounded-md h-48">
+            <div className="p-4 rounded-md h-48 section-content">
               <h2 className="text-lg font-bold mb-2">Projects</h2>
               <div className="space-y-2">
-                <a href="https://github.com/kbinreallife/github-pages-next-tailwind-boilerplate" className="block text-blue-500">
+                <a href="https://github.com/kbinreallife/github-pages-next-tailwind-boilerplate" className="block text-blue-500" onClick={(e) => e.stopPropagation()}>
                   <div className="p-2 rounded bg-gray-800 hover:bg-gray-900">
                     Boilerplate project to make websites like this one
                   </div>
                 </a>
-                <a href="https://github.com/kbinreallife/kbinreallife-Github_Activity_Visualizer" className="block text-blue-500">
+                <a href="https://github.com/kbinreallife/kbinreallife-Github_Activity_Visualizer" className="block text-blue-500" onClick={(e) => e.stopPropagation()}>
                   <div className="p-2 rounded bg-gray-800 hover:bg-gray-900">
                     A Github Organization Activity Visualizer
                   </div>
                 </a>
-                <a href="https://comcode.org" className="block text-blue-500">
+                <a href="https://comcode.org" className="block text-blue-500" onClick={(e) => e.stopPropagation()}>
                   <div className="p-2 rounded bg-gray-800 hover:bg-gray-900">
                     The Organization I Volunteer for
                   </div>
@@ -179,26 +178,27 @@ export default function Home() {
 
           {/* Badges Section */}
           {showSection === 'badges' && (
-            <div className="p-4 rounded-md h-auto">
-              <h2 className="text-lg font-bold mb-2">Badges</h2>
-              <div className="grid grid-cols-2 gap-4">
-                {badges.map((badge, index) => (
-                  <a href={badge.linkUrl} target="_blank" rel="noopener noreferrer" key={index}>
-                    <img
-                      src={badge.imageUrl}
-                      alt={`Badge ${index + 1}`}
-                      width="200"
-                      height="200"
-                    />
-                  </a>
-                ))}
-              </div>
+          <div className="p-4 rounded-md h-auto section-content">
+            <h2 className="text-lg font-bold mb-2">Badges</h2>
+            <div className="grid gap-4 grid-container md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            {badges.map((badge, index) => (
+                <a href={badge.linkUrl} target="_blank" rel="noopener noreferrer" key={index} onClick={(e) => e.stopPropagation()} className="grid-item">
+                <img
+                    src={badge.imageUrl}
+                    alt={`Badge ${index + 1}`}
+                    width="200"
+                    height="200"
+                    className='max-w-none'
+                />
+                </a>
+            ))}
             </div>
+          </div>
           )}
 
           {/* Contact Section */}
           {showSection === 'contact' && (
-            <div className="p-4 rounded-md h-48">
+            <div className="p-4 rounded-md h-48 section-content">
               <h2 className="text-lg font-bold mb-2">Contact</h2>
               <div className="flex flex-col space-y-4">
                 {/* LinkedIn */}
@@ -209,6 +209,7 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-500 hover:underline"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       LinkedIn
                     </a>
@@ -222,6 +223,7 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-500 hover:underline"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       Bluesky
                     </a>
@@ -231,13 +233,16 @@ export default function Home() {
                 <div>
                   <h3 className="text-lg font-semibold"></h3>
                   <p>
-                    <span className="text-blue-500 hover:underline"><a href="https://discordapp.com/users/233443821940113408">Discord</a></span>
+                    <span className="text-blue-500 hover:underline">
+                      <a href="https://discordapp.com/users/233443821940113408" onClick={(e) => e.stopPropagation()}>Discord</a>
+                    </span>
                   </p>
                 </div>
                 <p>
                   <a
                     href="https://discord.gg/hackmud"
                     className="text-blue-500 hover:underline"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     hackmud discord
                   </a>
