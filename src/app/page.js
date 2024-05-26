@@ -11,18 +11,14 @@ export { DynamicHome };
 export default function Home() {
   const [showSection, setShowSection] = useState(null);
   const outsideClickListener = useRef(null);
-
-  // Function to toggle the visibility of the section based on the link clicked
   const toggleSection = (section) => {
     setShowSection(showSection === section ? null : section);
   };
 
-  // Function to hide all sections when clicking anywhere on the screen that is not a link
   const hideAllSections = () => {
     setShowSection(null);
   };
 
-  // Effect to add a global click event listener to hide sections when clicking outside the links
   useEffect(() => {
     outsideClickListener.current = (event) => {
       if (!event.target.closest('.nav-link')) {
@@ -35,7 +31,6 @@ export default function Home() {
     };
   }, []);
 
-  // Function to add click event listener to the links when they are clicked
   const handleClickLink = (section) => {
     return (event) => {
       event.stopPropagation();
@@ -44,20 +39,59 @@ export default function Home() {
   };
 
   const badges = [
-    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104579180',
-    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104554484',
-    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104434982',
-    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104338603',
-    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104338603',
-    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104066782',
-    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104066782',
-    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104024819',
-    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/103848058',
-    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/92312569',
-    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/84649053',
-    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/84040776',
-    'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/37169657'
-  ]
+    {
+      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104579180',
+      linkUrl: 'https://www.credential.net/104579180',
+    },
+    {
+      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104554484',
+      linkUrl: 'https://www.credential.net/104554484',
+    },
+    {
+      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104434982',
+      linkUrl: 'https://www.credential.net/104434982',
+    },
+    {
+      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104338603',
+      linkUrl: 'https://www.credential.net/104338603',
+    },
+    {
+      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104338603',
+      linkUrl: 'https://www.credential.net/104338603',
+    },
+    {
+      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104066782',
+      linkUrl: 'https://www.credential.net/104066782',
+    },
+    {
+      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104066782',
+      linkUrl: 'https://www.credential.net/104066782',
+    },
+    {
+      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104024819',
+      linkUrl: 'https://www.credential.net/104024819',
+    },
+    {
+      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/103848058',
+      linkUrl: 'https://www.credential.net/103848058',
+    },
+    {
+      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/92312569',
+      linkUrl: 'https://www.credential.net/92312569',
+    },
+    {
+      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/84649053',
+      linkUrl: 'https://www.credential.net/84649053',
+    },
+    {
+      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/84040776',
+      linkUrl: 'https://www.credential.net/84040776',
+    },
+    {
+      imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/37169657',
+      linkUrl: 'https://www.credential.net/37169657',
+    },
+  ];
 
   return (
     <div className="min-h-screen place-items-center dark:bg-grey-100">
@@ -149,14 +183,14 @@ export default function Home() {
               <h2 className="text-lg font-bold mb-2">Badges</h2>
               <div className="grid grid-cols-2 gap-4">
                 {badges.map((badge, index) => (
-                  <iframe
-                    key={index}
-                    src={badge}
-                    width="200"
-                    height="200"
-                    frameBorder="0"
-                    allowFullScreen
-                  ></iframe>
+                  <a href={badge.linkUrl} target="_blank" rel="noopener noreferrer" key={index}>
+                    <img
+                      src={badge.imageUrl}
+                      alt={`Badge ${index + 1}`}
+                      width="200"
+                      height="200"
+                    />
+                  </a>
                 ))}
               </div>
             </div>
