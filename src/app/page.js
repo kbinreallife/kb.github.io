@@ -37,6 +37,19 @@ export default function Home() {
     };
   }, []);
 
+  // Preload images
+  const preloadImages = useCallback(() => {
+    badges.forEach((badge) => {
+      const img = new Image();
+      img.src = badge.imageUrl;
+    });
+  }, []);
+  
+  // Call preloadImages function when the component mounts
+  useEffect(() => {
+    preloadImages();
+  }, [preloadImages]);
+
   const badges = [
     {
       imageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/104579180',
