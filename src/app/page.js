@@ -1,6 +1,7 @@
 'use client'
+
 import dynamic from 'next/dynamic';
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 
 const DynamicHome = dynamic(() => import('./globals.css'), { ssr: false });
@@ -13,7 +14,7 @@ export default function Home() {
   const toggleSection = (section) => {
     setShowSection(showSection === section ? null : section);
   };
-
+  
   const hideAllSections = () => {
     setShowSection(null);
   };
@@ -30,25 +31,12 @@ export default function Home() {
     };
   }, []);
 
-  const handleClickLink = useCallback((section) => {
+  const handleClickLink = (section) => {
     return (event) => {
       event.stopPropagation();
       toggleSection(section);
     };
-  }, []);
-
-  // Preload images
-  const preloadImages = useCallback(() => {
-    badges.forEach((badge) => {
-      const img = new Image();
-      img.src = badge.imageUrl;
-    });
-  }, []);
-  
-  // Call preloadImages function when the component mounts
-  useEffect(() => {
-    preloadImages();
-  }, [preloadImages]);
+  };
 
   const badges = [
     {
@@ -193,7 +181,7 @@ export default function Home() {
           {showSection === 'badges' && (
           <div className="p-4 rounded-md h-auto section-content">
             <h2 className="text-lg font-bold mb-2">Badges</h2>
-            <div className="grid gap-4 grid-container md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <div className="grid grid-cols-2 gap-4 grid-container">
             {badges.map((badge, index) => (
                 <a href={badge.linkUrl} target="_blank" rel="noopener noreferrer" key={index} onClick={(e) => e.stopPropagation()} className="grid-item">
                 <img
@@ -201,13 +189,13 @@ export default function Home() {
                     alt={`Badge ${index + 1}`}
                     width="200"
                     height="200"
-                    className='max-w-none'
                 />
                 </a>
             ))}
             </div>
           </div>
           )}
+
 
           {/* Contact Section */}
           {showSection === 'contact' && (
